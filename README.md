@@ -1,22 +1,27 @@
-<h1 align="center">KeySpace</h1>
-
 <div align="center">
 
-  <img src="" />
+  <img src="https://raw.githubusercontent.com/Zurkon/repo-assets/main/sokoban/sokoban.png" />
 
-A Typing Space Shooter built with [`Godot`](https://godotengine.org/)
+A Dead Simple Sokoban game built with [`Godot`](https://godotengine.org/)
 
 </div>
 
 ## Description
 
-This project was inspired by the typing game [`ZType`](https://zty.pe/)
+Sokoban is a type of transport puzzle, in which the player pushes boxes or crates around in a warehouse, trying to get them to storage locations. 
+
+Sokoban was created in 1981 by Hiroyuki Imabayashi, and published in 1982 by Thinking Rabbit, a software house based in Takarazuka, Japan
+
+<div align="center">
+
+  <img src="https://raw.githubusercontent.com/Zurkon/repo-assets/main/sokoban/clear_animation.gif" />
+
+</div>
 
 ## Libraries and Resources
 
 This project was made using:
 
 - [`Godot Engine`](https://github.com/godotengine/godot) - Multi-platform 2D and 3D game engine.
-- [`Spaceship Shooter Environment`](https://ansimuz.itch.io/spaceship-shooter-environment) - Space Shooter Pixel Art pack made by [`ansimuz`](https://ansimuz.itch.io/).
-- [`Space Background`](https://ansimuz.itch.io/space-background) - Space Background Pixel Art made by [`ansimuz`](https://ansimuz.itch.io/).
-- [`Early GameBoy`](https://www.dafont.com/pt/early-gameboy.font) - A custom Font based on the Nintendo Game Boy typeface.
+- [`Kenney Sokoban`](https://www.kenney.nl/assets/sokoban) - Sokoban tiles and sprites from [`kenney`](https://www.kenney.nl/).
+- [`Kenney Future Narrow`](https://www.kenney.nl/assets/kenney-fonts) - A font from [`kenney`](https://www.kenney.nl/).
