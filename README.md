@@ -12,16 +12,14 @@ Sokoban is a type of transport puzzle, in which the player pushes boxes or crate
 
 Sokoban was created in 1981 by Hiroyuki Imabayashi, and published in 1982 by Thinking Rabbit, a software house based in Takarazuka, Japan
 
-<div align="center">
-
-  <img src="https://raw.githubusercontent.com/Zurkon/repo-assets/main/sokoban/clear_animation.gif" />
-
-</div>
-
 ## Libraries and Resources
 
 This project was made using:
 
 - [`Godot Engine`](https://github.com/godotengine/godot) - Multi-platform 2D and 3D game engine.
-- [`Kenney Sokoban`](https://www.kenney.nl/assets/sokoban) - Sokoban tiles and sprites from [`kenney`](https://www.kenney.nl/).
-- [`Kenney Future Narrow`](https://www.kenney.nl/assets/kenney-fonts) - A font from [`kenney`](https://www.kenney.nl/).
+- [`Sokoban Tileset`](https://dani-maccari.itch.io/sokoban-tileset) - Sokoban tiles from [`dani-maccari`](https://dani-maccari.itch.io).
+- [`Pixel Art Pack`](https://o-lobster.itch.io/platformmetroidvania-pixel-art-asset-pack) - Player sprite from [`o-lobster`](https://o-lobster.itch.io).
+- [`Stacked Pixel`](https://monkopus.itch.io/stacked-pixel) - Font from [`monkopus`](https://monkopus.itch.io).
+- [`Sketchbook 2024-11-07`](https://tallbeard.itch.io/music-loop-bundle) - Music from [`tallbeard`](https://tallbeard.itch.io).
+- [`Input Prompt Pixel 16x`](https://www.kenney.nl/assets/input-prompts-pixel-16) - Input Interface from [`kenney`](https://www.kenney.nl).
+- [`Pattern Pack`](https://www.kenney.nl/assets/pattern-pack) - Background Pattern from [`kenney`](https://www.kenney.nl).

@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://dagevkvpe8ygy"]
+
+[ext_resource type="Texture2D" uid="uid://828werkaiv6g" path="res://sprites/herochar_idle_anim_strip_4.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://dfvwsekhmymqt" path="res://scenes/player.gd" id="1_g2els"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tuyoq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2els")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhqgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwgxs"]
+size = Vector2(10, 10)
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 6
+motion_mode = 1
+script = ExtResource("1_g2els")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tuyoq")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.3472295
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_rwgxs")
+
+[node name="RayCastUp" type="RayCast2D" parent="."]
+position = Vector2(8, 0)
+target_position = Vector2(0, -8)
+collision_mask = 6
+hit_from_inside = true
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+position = Vector2(8, 16)
+target_position = Vector2(0, 8)
+collision_mask = 6
+hit_from_inside = true
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 8)
+target_position = Vector2(-8, 0)
+collision_mask = 6
+hit_from_inside = true
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(16, 8)
+target_position = Vector2(8, 0)
+collision_mask = 6
+hit_from_inside = true

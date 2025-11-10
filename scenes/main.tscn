@@ -1,0 +1,158 @@
+[gd_scene load_steps=19 format=3 uid="uid://c6flcreju6k0v"]
+
+[ext_resource type="Shader" uid="uid://dcc7il3iw2g1q" path="res://scripts/scroll_bkgd.gdshader" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://dycbc6ub7wr13" path="res://scenes/gamecontroller.gd" id="1_trceg"]
+[ext_resource type="Texture2D" uid="uid://cprgis7b7ji1w" path="res://sprites/pattern_32.png" id="3_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://b7uigxtuvsmbw" path="res://levels/level_1.tscn" id="4_jkv2x"]
+[ext_resource type="LabelSettings" uid="uid://dlbdu8ymnma1v" path="res://scenes/main_label.tres" id="5_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://d7rtuffr1du5" path="res://sprites/dpad.png" id="6_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://ca662gjaw2eju" path="res://sprites/dpad_up.png" id="7_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://cxklcq7axweeg" path="res://sprites/dpad_down.png" id="8_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://bur5g62t60ibg" path="res://sprites/dpad_right.png" id="9_muem4"]
+[ext_resource type="Texture2D" uid="uid://dgtioqr7moqhi" path="res://sprites/dpad_left.png" id="10_dp3eg"]
+[ext_resource type="Texture2D" uid="uid://c4s0hpwl8aaqk" path="res://sprites/button.png" id="11_0ld40"]
+[ext_resource type="Texture2D" uid="uid://rxqvr5tnhqq0" path="res://sprites/button_pressed.png" id="12_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://ce683oou8chfk" path="res://scenes/transition.tscn" id="14_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://donljmcqt3iy5" path="res://sprites/key_r.png" id="14_jkv2x"]
+[ext_resource type="AudioStream" uid="uid://b38jt75x61hn3" path="res://sound/Sketchbook 2024-11-07.ogg" id="15_jkv2x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jyhfs"]
+shader = ExtResource("1_0wfyh")
+shader_parameter/scroll_speed = 0.030000001425
+shader_parameter/angle_degrees = 45.0
+shader_parameter/repeat_x = 10.0
+shader_parameter/repeat_y = 10.0
+shader_parameter/tint = Color(1, 1, 1, 0.19607843)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_yc10j"]
+frames = 5
+frame_0/texture = ExtResource("6_a8y0u")
+frame_1/texture = ExtResource("7_jkv2x")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("8_jbj1t")
+frame_2/duration = 0.2
+frame_3/texture = ExtResource("9_muem4")
+frame_3/duration = 0.2
+frame_4/texture = ExtResource("10_dp3eg")
+frame_4/duration = 0.2
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_jscy8"]
+frames = 2
+frame_0/texture = ExtResource("11_0ld40")
+frame_1/texture = ExtResource("12_gqmmt")
+frame_1/duration = 1.0
+
+[node name="GameController" type="Node"]
+script = ExtResource("1_trceg")
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.4509804, 0.84313726, 0.9019608, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+material = SubResource("ShaderMaterial_jyhfs")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_jkv2x")
+stretch_mode = 6
+
+[node name="Gameplay" type="Node2D" parent="."]
+
+[node name="Level1" parent="Gameplay" instance=ExtResource("4_jkv2x")]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftContainer" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -36.0
+offset_right = 134.0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="HBoxContainer" parent="UI/LeftContainer"]
+layout_mode = 2
+
+[node name="Movement" type="Label" parent="UI/LeftContainer/VBoxContainer"]
+layout_mode = 2
+text = "How to move:"
+label_settings = ExtResource("5_jbj1t")
+
+[node name="DPad" type="TextureRect" parent="UI/LeftContainer/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_yc10j")
+stretch_mode = 2
+
+[node name="RightContainer" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -36.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="HBoxContainer" parent="UI/RightContainer"]
+layout_mode = 2
+
+[node name="Restart" type="Label" parent="UI/RightContainer/VBoxContainer"]
+layout_mode = 2
+text = "Restart:"
+label_settings = ExtResource("5_jbj1t")
+
+[node name="Button" type="TextureRect" parent="UI/RightContainer/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_jscy8")
+stretch_mode = 2
+
+[node name="Or" type="Label" parent="UI/RightContainer/VBoxContainer"]
+layout_mode = 2
+text = "or"
+label_settings = ExtResource("5_jbj1t")
+
+[node name="Key" type="TextureRect" parent="UI/RightContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("14_jkv2x")
+
+[node name="SceneTransition" parent="UI" instance=ExtResource("14_a8y0u")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_jkv2x")
+volume_db = -6.0
+bus = &"Music"
+parameters/looping = true

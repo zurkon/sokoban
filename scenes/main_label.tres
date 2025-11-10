@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dlbdu8ymnma1v"]
+
+[ext_resource type="FontFile" uid="uid://dw3slfbaxqxrr" path="res://sprites/Stacked pixel.ttf" id="1_uhgxv"]
+
+[resource]
+font = ExtResource("1_uhgxv")
+font_size = 12
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)

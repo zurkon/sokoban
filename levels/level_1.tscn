@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=4 uid="uid://b7uigxtuvsmbw"]
+
+[ext_resource type="Script" uid="uid://ricp0xm6m2hk" path="res://scenes/level.gd" id="1_n46q3"]
+[ext_resource type="Texture2D" uid="uid://c3my41jg7ady6" path="res://sprites/tileset.png" id="2_btoec"]
+[ext_resource type="PackedScene" uid="uid://bdt651v2oovra" path="res://scenes/platform.tscn" id="3_gwceb"]
+[ext_resource type="PackedScene" uid="uid://dao3mpcs3vkg5" path="res://scenes/box.tscn" id="4_l53as"]
+[ext_resource type="PackedScene" uid="uid://dagevkvpe8ygy" path="res://scenes/player.tscn" id="5_3sk1a"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wyf3"]
+texture = ExtResource("2_btoec")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_k0juu"]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 0
+sources/5 = SubResource("TileSetAtlasSource_4wyf3")
+
+[node name="Level" type="Node2D" node_paths=PackedStringArray("goals", "player")]
+script = ExtResource("1_n46q3")
+goals = [NodePath("Platform1"), NodePath("Platform2"), NodePath("Platform3")]
+player = NodePath("Player")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAFAAUABQAAAAAAAAAGAAUABQABAAAAAAAHAAUABQACAAAAAAAFAAEABQACAAAAAAAFAAIABQACAAAAAAAFAAMABQACAAAAAAAFAAQABQACAAAAAAAIAAUABQACAAAAAAAIAAYABQABAAAAAAAHAAYABQACAAAAAAAGAAEABQACAAEAAAAHAAEABQAAAAAAAAAIAAEABQAAAAAAAAAJAAEABQABAAAAAAAKAAEABQACAAAAAAAKAAIABQACAAAAAAAKAAMABQACAAAAAAAKAAQABQACAAAAAAAKAAUABQABAAAAAAALAAUABQAAAAAAAAAMAAUABQABAAAAAAAMAAQABQACAAAAAAAMAAMABQACAAAAAAAOAAMABQACAAAAAAANAAMABQACAAEAAAAOAAQABQACAAAAAAAOAAUABQACAAAAAAAOAAYABQACAAAAAAAOAAcABQACAAAAAAAOAAgABQABAAAAAAANAAgABQAAAAAAAAAMAAgABQAAAAAAAAALAAgABQACAAAAAAALAAcABQACAAAAAAALAAkABQACAAEAAAAKAAkABQAAAAAAAAAHAAcABQACAAAAAAAHAAgABQACAAAAAAAHAAkABQABAAAAAAAIAAkABQAAAAAAAAAJAAkABQAAAAAAAAAJAAIABQABAAEAAAAJAAMABQABAAEAAAAJAAQABQABAAEAAAAJAAUABQABAAEAAAANAAQABQABAAEAAAANAAUABQABAAEAAAANAAYABQABAAEAAAANAAcABQABAAEAAAAKAAcABQABAAEAAAAKAAgABQABAAEAAAAIAAgABQAAAAEAAAAIAAcABQAAAAEAAAAJAAcABQAAAAEAAAAJAAgABQAAAAEAAAAJAAYABQAAAAEAAAAKAAYABQAAAAEAAAALAAYABQAAAAEAAAAMAAYABQAAAAEAAAAMAAcABQAAAAEAAAAIAAQABQAAAAEAAAAIAAMABQAAAAEAAAAIAAIABQAAAAEAAAAHAAIABQAAAAEAAAAGAAIABQAAAAEAAAAGAAMABQAAAAEAAAAGAAQABQAAAAEAAAAHAAQABQAAAAEAAAAHAAMABQAAAAEAAAA=")
+tile_set = SubResource("TileSet_k0juu")
+
+[node name="Platform1" parent="." instance=ExtResource("3_gwceb")]
+position = Vector2(208, 64)
+
+[node name="Platform2" parent="." instance=ExtResource("3_gwceb")]
+position = Vector2(208, 80)
+
+[node name="Platform3" parent="." instance=ExtResource("3_gwceb")]
+position = Vector2(208, 96)
+
+[node name="Box1" parent="." instance=ExtResource("4_l53as")]
+position = Vector2(128, 48)
+
+[node name="Box2" parent="." instance=ExtResource("4_l53as")]
+position = Vector2(144, 64)
+
+[node name="Box3" parent="." instance=ExtResource("4_l53as")]
+position = Vector2(128, 64)
+
+[node name="Player" parent="." instance=ExtResource("5_3sk1a")]
+position = Vector2(144, 48)

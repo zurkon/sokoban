@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdt651v2oovra"]
+
+[ext_resource type="Script" uid="uid://cml6k1kwqwwb5" path="res://scenes/platform.gd" id="1_nlgqw"]
+[ext_resource type="Texture2D" uid="uid://c3my41jg7ady6" path="res://sprites/tileset.png" id="2_507ja"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1ckp"]
+custom_solver_bias = 1.0
+size = Vector2(4, 4)
+
+[node name="Platform" type="Area2D"]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_nlgqw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_507ja")
+centered = false
+hframes = 5
+vframes = 5
+frame = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_n1ckp")

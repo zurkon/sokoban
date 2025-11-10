@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=4 uid="uid://kiuph5lt10x"]
+
+[ext_resource type="PackedScene" uid="uid://dagevkvpe8ygy" path="res://scenes/player.tscn" id="1_nnsk1"]
+[ext_resource type="Texture2D" uid="uid://c3my41jg7ady6" path="res://sprites/tileset.png" id="1_rwgxs"]
+[ext_resource type="Script" uid="uid://ricp0xm6m2hk" path="res://scenes/level.gd" id="1_tpt06"]
+[ext_resource type="PackedScene" uid="uid://dao3mpcs3vkg5" path="res://scenes/box.tscn" id="3_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://bdt651v2oovra" path="res://scenes/platform.tscn" id="4_k0juu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wyf3"]
+texture = ExtResource("1_rwgxs")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_k0juu"]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 0
+sources/5 = SubResource("TileSetAtlasSource_4wyf3")
+
+[node name="Sandbox" type="Node2D" node_paths=PackedStringArray("goals", "player")]
+script = ExtResource("1_tpt06")
+goals = [NodePath("Platform")]
+player = NodePath("Player")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAFAAUABQAAAAAAAAAGAAUABQABAAAAAAAHAAUABQACAAAAAAAFAAEABQACAAAAAAAFAAIABQACAAAAAAAFAAMABQACAAAAAAAFAAQABQACAAAAAAAIAAUABQACAAAAAAAIAAYABQABAAAAAAAHAAYABQACAAAAAAAGAAEABQACAAEAAAAHAAEABQAAAAAAAAAIAAEABQAAAAAAAAAJAAEABQABAAAAAAAKAAEABQACAAAAAAAKAAIABQACAAAAAAAKAAMABQACAAAAAAAKAAQABQACAAAAAAAKAAUABQABAAAAAAALAAUABQAAAAAAAAAMAAUABQABAAAAAAAMAAQABQACAAAAAAAMAAMABQACAAAAAAAOAAMABQACAAAAAAANAAMABQACAAEAAAAOAAQABQACAAAAAAAOAAUABQACAAAAAAAOAAYABQACAAAAAAAOAAcABQACAAAAAAAOAAgABQABAAAAAAANAAgABQAAAAAAAAAMAAgABQAAAAAAAAALAAgABQACAAAAAAALAAcABQACAAAAAAALAAkABQACAAEAAAAKAAkABQAAAAAAAAAHAAcABQACAAAAAAAHAAgABQACAAAAAAAHAAkABQABAAAAAAAIAAkABQAAAAAAAAAJAAkABQAAAAAAAAAJAAIABQABAAEAAAAJAAMABQABAAEAAAAJAAQABQABAAEAAAAJAAUABQABAAEAAAANAAQABQABAAEAAAANAAUABQABAAEAAAANAAYABQABAAEAAAANAAcABQABAAEAAAAKAAcABQABAAEAAAAKAAgABQABAAEAAAAIAAgABQAAAAEAAAAIAAcABQAAAAEAAAAJAAcABQAAAAEAAAAJAAgABQAAAAEAAAAJAAYABQAAAAEAAAAKAAYABQAAAAEAAAALAAYABQAAAAEAAAAMAAYABQAAAAEAAAAMAAcABQAAAAEAAAAIAAQABQAAAAEAAAAIAAMABQAAAAEAAAAIAAIABQAAAAEAAAAHAAIABQAAAAEAAAAGAAIABQAAAAEAAAAGAAMABQAAAAEAAAAGAAQABQAAAAEAAAAHAAQABQAAAAEAAAAHAAMABQAAAAEAAAA=")
+tile_set = SubResource("TileSet_k0juu")
+
+[node name="Platform" parent="." instance=ExtResource("4_k0juu")]
+position = Vector2(208, 64)
+
+[node name="Box" parent="." instance=ExtResource("3_4wyf3")]
+position = Vector2(128, 48)
+
+[node name="Player" parent="." instance=ExtResource("1_nnsk1")]
+position = Vector2(144, 80)

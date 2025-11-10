@@ -1,0 +1,129 @@
+[gd_scene load_steps=10 format=4 uid="uid://xhfky3daui0x"]
+
+[ext_resource type="Script" uid="uid://ricp0xm6m2hk" path="res://scenes/level.gd" id="1_oe5jn"]
+[ext_resource type="Texture2D" uid="uid://c3my41jg7ady6" path="res://sprites/tileset.png" id="2_qbm0a"]
+[ext_resource type="PackedScene" uid="uid://bdt651v2oovra" path="res://scenes/platform.tscn" id="3_gm3vf"]
+[ext_resource type="PackedScene" uid="uid://dao3mpcs3vkg5" path="res://scenes/box.tscn" id="4_y8kf4"]
+[ext_resource type="PackedScene" uid="uid://dagevkvpe8ygy" path="res://scenes/player.tscn" id="5_bir35"]
+[ext_resource type="FontFile" uid="uid://dw3slfbaxqxrr" path="res://sprites/Stacked pixel.ttf" id="6_qbm0a"]
+[ext_resource type="LabelSettings" uid="uid://dlbdu8ymnma1v" path="res://scenes/main_label.tres" id="7_gm3vf"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wyf3"]
+texture = ExtResource("2_qbm0a")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_k0juu"]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 0
+sources/5 = SubResource("TileSetAtlasSource_4wyf3")
+
+[node name="Thanks" type="Node2D" node_paths=PackedStringArray("goals", "player")]
+script = ExtResource("1_oe5jn")
+goals = [NodePath("Platform1")]
+player = NodePath("Player")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAGAAUABQACAAAAAAAGAAQABQACAAAAAAAHAAQABQACAAEAAAAIAAQABQAAAAAAAAAJAAQABQAAAAAAAAAKAAQABQAAAAAAAAALAAQABQAAAAAAAAAMAAQABQABAAAAAAAMAAYABQAAAAAAAAALAAYABQAAAAAAAAAKAAYABQAAAAAAAAAJAAYABQAAAAAAAAAIAAYABQAAAAAAAAAHAAYABQAAAAAAAAAGAAYABQABAAAAAAAMAAUABQABAAEAAAALAAUABQAAAAEAAAAKAAUABQAAAAEAAAAJAAUABQAAAAEAAAAIAAUABQAAAAEAAAAHAAUABQAAAAEAAAANAAQABQACAAAAAAANAAUABQACAAAAAAANAAYABQACAAEAAAA=")
+tile_set = SubResource("TileSet_k0juu")
+
+[node name="Platform1" parent="." instance=ExtResource("3_gm3vf")]
+position = Vector2(192, 80)
+
+[node name="Box1" parent="." instance=ExtResource("4_y8kf4")]
+position = Vector2(128, 80)
+
+[node name="Player" parent="." instance=ExtResource("5_bir35")]
+position = Vector2(112, 80)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TopContainer" type="MarginContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(320, 40)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 48.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TopContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TopContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/normal_font = ExtResource("6_qbm0a")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "
+[wave amp=40]Thank You so much for playing! [/wave]
+
+"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Play" type="RichTextLabel" parent="CanvasLayer/TopContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/normal_font = ExtResource("6_qbm0a")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[pulse freq=1.4 color=#ffffff60]Move the box to the platform to play again.[/pulse]
+"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="BottomContainer" type="MarginContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(320, 60)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BottomContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="tilemap" type="Label" parent="CanvasLayer/BottomContainer/VBoxContainer"]
+layout_mode = 2
+text = "Tilemap by dani-maccari.itch.io"
+label_settings = ExtResource("7_gm3vf")
+horizontal_alignment = 1
+
+[node name="sprite" type="Label" parent="CanvasLayer/BottomContainer/VBoxContainer"]
+layout_mode = 2
+text = "player by o-lobster.itch.io"
+label_settings = ExtResource("7_gm3vf")
+horizontal_alignment = 1
+
+[node name="music" type="Label" parent="CanvasLayer/BottomContainer/VBoxContainer"]
+layout_mode = 2
+text = "music by tallbeard.itch.io"
+label_settings = ExtResource("7_gm3vf")
+horizontal_alignment = 1
+
+[node name="font" type="Label" parent="CanvasLayer/BottomContainer/VBoxContainer"]
+layout_mode = 2
+text = "font by monkopus.itch.io"
+label_settings = ExtResource("7_gm3vf")
+horizontal_alignment = 1
