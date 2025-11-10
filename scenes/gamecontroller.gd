@@ -4,6 +4,7 @@ class_name GameController
 @onready var gameplay = $Gameplay
 @onready var transition = $UI/SceneTransition
 @onready var audioplayer = $AudioStreamPlayer
+@onready var camera = $Camera2D
 
 var current_level: Level = null
 
@@ -15,12 +16,20 @@ func _ready() -> void:
 	current_level.level_completed.connect(_on_level_completed)
 	current_level.level_reset_requested.connect(_on_level_reset_requested)
 	
+	get_tree().root.size_changed.connect(_on_size_changed)
+	
 	if transition.is_game_starting:
 		transition.get_child(0).material.set("shader_parameter/progress", 1.0)
 		transition.get_child(0).material.set("shader_parameter/diagonal", true)
 		transition.fade_out()
 		await  transition.transition_finished
 		audioplayer.play()
+
+func _on_size_changed():
+	if get_tree().root.size > Vector2i(1280, 720):
+		camera.zoom = Vector2(0.7,0.7)
+	else:
+		camera.zoom = Vector2(1, 1)
 
 func _on_level_completed():
 	print("[GameController]: Level Completed!")

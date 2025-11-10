@@ -45,29 +45,30 @@ frame_1/duration = 1.0
 [node name="GameController" type="Node"]
 script = ExtResource("1_trceg")
 
-[node name="Background" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -90.0
+offset_right = 160.0
+offset_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.4509804, 0.84313726, 0.9019608, 1)
 
 [node name="TextureRect" type="TextureRect" parent="Background"]
 material = SubResource("ShaderMaterial_jyhfs")
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -90.0
+offset_right = 160.0
+offset_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_jkv2x")
@@ -77,16 +78,9 @@ stretch_mode = 6
 
 [node name="Level1" parent="Gameplay" instance=ExtResource("4_jkv2x")]
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="UI" type="CanvasLayer" parent="."]
 
 [node name="LeftContainer" type="MarginContainer" parent="UI"]
-layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -112,7 +106,6 @@ texture = SubResource("AnimatedTexture_yc10j")
 stretch_mode = 2
 
 [node name="RightContainer" type="MarginContainer" parent="UI"]
-layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -150,9 +143,13 @@ layout_mode = 2
 texture = ExtResource("14_jkv2x")
 
 [node name="SceneTransition" parent="UI" instance=ExtResource("14_a8y0u")]
+layer = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_jkv2x")
 volume_db = -6.0
 bus = &"Music"
 parameters/looping = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(160, 90)
