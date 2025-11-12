@@ -13,7 +13,7 @@ var sprite_tween: Tween
 @onready var ray_left := $RayCastLeft
 @onready var ray_right := $RayCastRight
 
-var can_move = true
+var can_move = false
 
 func _physics_process(_delta: float) -> void:
 	if !can_move:

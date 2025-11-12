@@ -8,9 +8,12 @@ signal level_reset_requested
 @export var player: Player
 
 func _ready() -> void:
-	print("[Level]: signal connected...")
+	print("[Level]: signal connected.")
 	player.player_moved.connect(_on_player_moved)
 	player.reset_requested.connect(_on_reset_requested)
+
+func init_player():
+	player.can_move = true
 
 func _on_player_moved():
 	#print("[Level]: Player moved...")
