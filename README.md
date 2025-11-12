@@ -23,3 +23,4 @@ This project was made using:
 - [`Sketchbook 2024-11-07`](https://tallbeard.itch.io/music-loop-bundle) - Music from [`tallbeard`](https://tallbeard.itch.io).
 - [`Input Prompt Pixel 16x`](https://www.kenney.nl/assets/input-prompts-pixel-16) - Input Interface from [`kenney`](https://www.kenney.nl).
 - [`Pattern Pack`](https://www.kenney.nl/assets/pattern-pack) - Background Pattern from [`kenney`](https://www.kenney.nl).
+- [`Jacques Duthen's sokogen-990602`](http://sneezingtiger.com/sokoban/levelpics/sokogenImages.html) - Game Levels.
